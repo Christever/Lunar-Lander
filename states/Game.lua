@@ -10,7 +10,7 @@ local Player            = require("objects.Rocket")
 function Game.load()
     UI_carte.load()
     UI_module.load()
-    UI_Sitepanel.load()
+    UI_Sitepanel.load(UI_carte.shipX, UI_carte.shipY)
     UI_DescentControl.load()
 
     Player.load()
