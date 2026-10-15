@@ -1,13 +1,13 @@
 local UI_Sitepanel = {}
 
-function UI_Sitepanel.load(x, y)
+function UI_Sitepanel.load(player)
     UI_Sitepanel.image     = love.graphics.newImage("assets/Images/panel1.png")
     UI_Sitepanel.x         = 20
     UI_Sitepanel.y         = 440
     UI_Sitepanel.width     = 500
     UI_Sitepanel.height    = 340
-    UI_Sitepanel.latitude  = x
-    UI_Sitepanel.longitude = y
+    UI_Sitepanel.latitude  = player.shipX
+    UI_Sitepanel.longitude = player.shipY
 end
 
 function UI_Sitepanel.update(dt)

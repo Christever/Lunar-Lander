@@ -15,7 +15,7 @@ function UI_carte.update(dt)
 
 end
 
-function UI_carte.draw(Player)
+function UI_carte.draw(player)
     love.graphics.draw(
         UI_carte.bg,
         UI_carte.x, UI_carte.y,
@@ -48,11 +48,11 @@ function UI_carte.draw(Player)
     -- Position provisoire du marqueur sur la carte
     love.graphics.draw(
         UI_carte.ship,
-        UI_carte.x + UI_carte.shipX,
-        UI_carte.y + UI_carte.shipY
+        -- UI_carte.x + UI_carte.shipX,
+        -- UI_carte.y + UI_carte.shipY
+        player.shipX,
+        player.shipY
     )
 end
-
-
 
 return UI_carte

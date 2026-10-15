@@ -7,10 +7,17 @@ function Rocket.load()
     Rocket.height = Rocket.image:getHeight()
     Rocket.x      = 940
     Rocket.y      = 190
+    Rocket.shipX  = 150
+    Rocket.shipY  = 230
 end
 
 function Rocket.update(dt)
-
+    if love.keyboard.isDown("left") then
+        Rocket.shipX = Rocket.shipX - 10
+    end
+    if love.keyboard.isDown("right") then
+        Rocket.shipX = Rocket.shipX + 10
+    end
 end
 
 function Rocket.draw()

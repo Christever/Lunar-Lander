@@ -8,18 +8,23 @@ local UI_DescentControl = require("objects.UI.UI_DescentControl")
 local Player            = require("objects.Rocket")
 
 function Game.load()
+    Player.load()
+
     UI_carte.load()
     UI_module.load()
-    UI_Sitepanel.load(UI_carte.shipX, UI_carte.shipY)
+    UI_Sitepanel.load(Player)
     UI_DescentControl.load()
 
-    Player.load()
 
     love.graphics.setBackgroundColor(1, 1, 1)
 end
 
 function Game.update(dt)
     Player.update(dt)
+    UI_carte.update(dt)
+    UI_module.update(dt)
+    UI_Sitepanel.update(dt)
+    UI_DescentControl.update(dt)
 end
 
 function Game.draw()
