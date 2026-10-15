@@ -18,8 +18,7 @@ function Rocket.load()
     Rocket.maxSpeed      = 200
     Rocket.thrustPercent = 0
 
-    Rocket.fuel          = 800
-    Rocket.altitude      = 900
+    Rocket.altitude      = 500
     Rocket.altitudeVY    = 0
 
     -- Physique lunaire
@@ -27,25 +26,33 @@ function Rocket.load()
     Rocket.thrust        = 2.0
 
     -- Carburant
-    Rocket.fuel          = 800
+    Rocket.fuel          = 400
+
+    Rocket.fuelVertical  = 10
+    Rocket.fuelLatitude  = 2
+    Rocket.fuelLongitude = 2
 end
 
 function Rocket.update(dt)
     -- Accélération commandée
     if love.keyboard.isDown("left") then
         Rocket.shipVX = Rocket.shipVX - Rocket.acceleration * dt
+        Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLatitude * dt)
     end
 
     if love.keyboard.isDown("right") then
         Rocket.shipVX = Rocket.shipVX + Rocket.acceleration * dt
+        Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLatitude * dt)
     end
 
     if love.keyboard.isDown("up") then
         Rocket.shipVY = Rocket.shipVY - Rocket.acceleration * dt
+        Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLongitude * dt)
     end
 
     if love.keyboard.isDown("down") then
         Rocket.shipVY = Rocket.shipVY + Rocket.acceleration * dt
+        Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLongitude * dt)
     end
 
     -- Limiter la vitesse maximale
@@ -66,7 +73,7 @@ function Rocket.update(dt)
     if love.keyboard.isDown("space") and Rocket.fuel > 0 then
         Rocket.thrustPercent = 100
         Rocket.altitudeVY = Rocket.altitudeVY + Rocket.thrust * dt
-        Rocket.fuel = math.max(0, Rocket.fuel - 5 * dt)
+        Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelVertical * dt)
     else
         Rocket.thrustPercent = 0
     end
