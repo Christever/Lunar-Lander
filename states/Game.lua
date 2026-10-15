@@ -21,16 +21,16 @@ end
 
 function Game.update(dt)
     Player.update(dt)
-    UI_carte.update(dt)
+    UI_carte.update(dt, Player)
     UI_module.update(dt)
     UI_Sitepanel.update(dt)
     UI_DescentControl.update(dt)
 end
 
 function Game.draw()
-    UI_carte.draw(Player)
+    UI_carte.draw()
     UI_module.draw()
-    UI_Sitepanel.draw()
+    UI_Sitepanel.draw(Player)
     UI_DescentControl.draw()
 
     Player.draw()

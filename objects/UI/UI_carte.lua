@@ -11,11 +11,13 @@ function UI_carte.load()
     UI_carte.shipY  = 200
 end
 
-function UI_carte.update(dt)
-
+function UI_carte.update(dt, player)
+    UI_carte.shipX = math.floor(player.shipX) - 20 -- decalage +20 de la carte
+    UI_carte.shipY = math.floor(player.shipY) - 20 -- decalage +20 de la carte
+   
 end
 
-function UI_carte.draw(player)
+function UI_carte.draw()
     love.graphics.draw(
         UI_carte.bg,
         UI_carte.x, UI_carte.y,
@@ -48,10 +50,9 @@ function UI_carte.draw(player)
     -- Position provisoire du marqueur sur la carte
     love.graphics.draw(
         UI_carte.ship,
-        -- UI_carte.x + UI_carte.shipX,
-        -- UI_carte.y + UI_carte.shipY
-        player.shipX,
-        player.shipY
+        UI_carte.x + UI_carte.shipX,
+        UI_carte.y + UI_carte.shipY
+
     )
 end
 

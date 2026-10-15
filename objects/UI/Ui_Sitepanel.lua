@@ -14,7 +14,7 @@ function UI_Sitepanel.update(dt)
 
 end
 
-function UI_Sitepanel.draw()
+function UI_Sitepanel.draw(player)
     love.graphics.setColor(0, 0, 0)
     love.graphics.rectangle(
         "fill",
@@ -58,8 +58,14 @@ function UI_Sitepanel.draw()
     love.graphics.setColor(0, 0, 0)
     love.graphics.setFont(FontUI)
 
-    love.graphics.print(UI_Sitepanel.latitude, UI_Sitepanel.x + 150, UI_Sitepanel.y + 140)
-    love.graphics.print(UI_Sitepanel.longitude, UI_Sitepanel.x + 270, UI_Sitepanel.y + 140)
+    local latitude  = math.floor(player.shipX)
+    local longitude = math.floor(player.shipY)
+
+
+
+    love.graphics.print(string.format("%03d", latitude), UI_Sitepanel.x + 150, UI_Sitepanel.y + 140)
+    love.graphics.print(string.format("%03d", longitude), UI_Sitepanel.x + 270, UI_Sitepanel.y + 140)
+
     love.graphics.setColor(1, 1, 1)
 
     love.graphics.setFont(FontLarge)
