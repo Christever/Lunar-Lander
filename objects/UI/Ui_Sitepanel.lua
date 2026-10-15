@@ -2,7 +2,7 @@ local UI_Sitepanel = {}
 
 function UI_Sitepanel.load(player)
     UI_Sitepanel.image     = love.graphics.newImage("assets/Images/panel1.png")
-    UI_Sitepanel.x         = 20
+    UI_Sitepanel.x         = 70
     UI_Sitepanel.y         = 440
     UI_Sitepanel.width     = 500
     UI_Sitepanel.height    = 340
@@ -63,8 +63,8 @@ function UI_Sitepanel.draw(player)
 
 
 
-    love.graphics.print(string.format("%03d", latitude), UI_Sitepanel.x + 150, UI_Sitepanel.y + 140)
-    love.graphics.print(string.format("%03d", longitude), UI_Sitepanel.x + 270, UI_Sitepanel.y + 140)
+    love.graphics.print(string.format("%03d", latitude), UI_Sitepanel.x + 155, UI_Sitepanel.y + 140)
+    love.graphics.print(string.format("%03d", longitude), UI_Sitepanel.x + 275, UI_Sitepanel.y + 140)
 
     love.graphics.setColor(1, 1, 1)
 

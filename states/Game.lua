@@ -24,14 +24,14 @@ function Game.update(dt)
     UI_carte.update(dt, Player)
     UI_module.update(dt)
     UI_Sitepanel.update(dt)
-    UI_DescentControl.update(dt)
+    UI_DescentControl.update(dt, Player)
 end
 
 function Game.draw()
     UI_carte.draw()
     UI_module.draw()
     UI_Sitepanel.draw(Player)
-    UI_DescentControl.draw()
+    UI_DescentControl.draw(Player)
 
     Player.draw()
 end

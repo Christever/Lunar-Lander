@@ -2,20 +2,32 @@ local Rocket = {}
 local UI_carte = require("objects.UI.UI_carte")
 
 function Rocket.load()
-    Rocket.image        = love.graphics.newImage("assets/Images/fusee.png")
-    Rocket.width        = Rocket.image:getWidth()
-    Rocket.height       = Rocket.image:getHeight()
-    Rocket.x            = 940
-    Rocket.y            = 190
-    Rocket.shipX        = 150
-    Rocket.shipY        = 230
-    Rocket.speed        = 60
+    Rocket.image         = love.graphics.newImage("assets/Images/fusee.png")
+    Rocket.width         = Rocket.image:getWidth()
+    Rocket.height        = Rocket.image:getHeight()
+    Rocket.x             = 940
+    Rocket.y             = 190
+    Rocket.shipX         = 150
+    Rocket.shipY         = 230
+    Rocket.speed         = 60
 
-    Rocket.shipVX       = 0
-    Rocket.shipVY       = 0
+    Rocket.shipVX        = 0
+    Rocket.shipVY        = 0
 
-    Rocket.acceleration = 150
-    Rocket.maxSpeed     = 200
+    Rocket.acceleration  = 150
+    Rocket.maxSpeed      = 200
+    Rocket.thrustPercent = 0
+
+    Rocket.fuel          = 800
+    Rocket.altitude      = 900
+    Rocket.altitudeVY    = 0
+
+    -- Physique lunaire
+    Rocket.gravity       = 1.6
+    Rocket.thrust        = 4.0
+
+    -- Carburant
+    Rocket.fuel          = 800
 end
 
 function Rocket.update(dt)
@@ -46,6 +58,27 @@ function Rocket.update(dt)
     -- Déplacement : conservation de la vitesse
     Rocket.shipX = Rocket.shipX + Rocket.shipVX * dt
     Rocket.shipY = Rocket.shipY + Rocket.shipVY * dt
+
+    -- Gravité lunaire : accélération vers le sol
+    Rocket.altitudeVY = Rocket.altitudeVY - Rocket.gravity * dt
+
+    -- Moteur : poussée vers le haut
+    if love.keyboard.isDown("space") and Rocket.fuel > 0 then
+        Rocket.thrustPercent = 100
+        Rocket.altitudeVY = Rocket.altitudeVY + Rocket.thrust * dt
+        Rocket.fuel = math.max(0, Rocket.fuel - 30 * dt)
+    else
+        Rocket.thrustPercent = 0
+    end
+
+    -- Mise à jour de l'altitude
+    Rocket.altitude = Rocket.altitude + Rocket.altitudeVY * dt
+
+    -- Contact avec le sol
+    if Rocket.altitude <= 0 then
+        Rocket.altitude = 0
+        Rocket.altitudeVY = 0
+    end
 end
 
 function Rocket.draw()
