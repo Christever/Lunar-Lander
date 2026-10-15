@@ -24,7 +24,7 @@ function Rocket.load()
 
     -- Physique lunaire
     Rocket.gravity       = 1.6
-    Rocket.thrust        = 4.0
+    Rocket.thrust        = 2.0
 
     -- Carburant
     Rocket.fuel          = 800
@@ -66,7 +66,7 @@ function Rocket.update(dt)
     if love.keyboard.isDown("space") and Rocket.fuel > 0 then
         Rocket.thrustPercent = 100
         Rocket.altitudeVY = Rocket.altitudeVY + Rocket.thrust * dt
-        Rocket.fuel = math.max(0, Rocket.fuel - 30 * dt)
+        Rocket.fuel = math.max(0, Rocket.fuel - 5 * dt)
     else
         Rocket.thrustPercent = 0
     end

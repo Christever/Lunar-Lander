@@ -9,11 +9,8 @@ function UI_DescentControl.load()
     UI_DescentControl.height = 340
 end
 
-function UI_DescentControl.update(dt, player)
-    if love.keyboard.isDown("space") then
-        player.fuel =
-            math.max(0, player.fuel - 30 * dt)
-    end
+function UI_DescentControl.update(dt)
+
 end
 
 function UI_DescentControl.draw(player)

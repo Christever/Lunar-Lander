@@ -24,7 +24,7 @@ function Game.update(dt)
     UI_carte.update(dt, Player)
     UI_module.update(dt)
     UI_Sitepanel.update(dt)
-    UI_DescentControl.update(dt, Player)
+    UI_DescentControl.update(dt)
 end
 
 function Game.draw()
