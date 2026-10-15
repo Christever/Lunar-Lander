@@ -22,9 +22,10 @@ end
 function Game.update(dt)
     Player.update(dt)
     UI_carte.update(dt, Player)
-    UI_module.update(dt)
+    UI_module.update(dt, Player)
     UI_Sitepanel.update(dt)
     UI_DescentControl.update(dt)
+    print(Player.shipVX)
 end
 
 function Game.draw()

@@ -12,8 +12,8 @@ function UI_carte.load()
 end
 
 function UI_carte.update(dt, player)
-    UI_carte.shipX = math.floor(player.shipX) - 20 -- decalage +20 de la carte
-    UI_carte.shipY = math.floor(player.shipY) - 20 -- decalage +20 de la carte
+    UI_carte.shipX = math.floor(player.latitude) - 20 -- decalage +20 de la carte
+    UI_carte.shipY = math.floor(player.longitude) - 20 -- decalage +20 de la carte
    
 end
 

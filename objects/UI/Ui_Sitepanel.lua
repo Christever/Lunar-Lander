@@ -6,8 +6,8 @@ function UI_Sitepanel.load(player)
     UI_Sitepanel.y         = 440
     UI_Sitepanel.width     = 500
     UI_Sitepanel.height    = 340
-    UI_Sitepanel.latitude  = player.shipX
-    UI_Sitepanel.longitude = player.shipY
+    UI_Sitepanel.latitude  = player.latitude
+    UI_Sitepanel.longitude = player.longitude
 end
 
 function UI_Sitepanel.update(dt)
@@ -58,8 +58,8 @@ function UI_Sitepanel.draw(player)
     love.graphics.setColor(0, 0, 0)
     love.graphics.setFont(FontUI)
 
-    local latitude  = math.floor(player.shipX)
-    local longitude = math.floor(player.shipY)
+    local latitude  = math.floor(player.latitude)
+    local longitude = math.floor(player.longitude)
 
 
 
