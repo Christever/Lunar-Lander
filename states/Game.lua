@@ -20,7 +20,7 @@ end
 
 function Game.update(dt)
     Player.update(dt)
-    UI_carte.updateShipPosition(Player)
+ 
 end
 
 function Game.draw()

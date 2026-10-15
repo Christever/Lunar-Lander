@@ -10,7 +10,7 @@ function Rocket.load()
 end
 
 function Rocket.update(dt)
-    UI_carte.setShipPosition(Rocket.x, Rocket.y)
+   
 end
 
 function Rocket.draw()
