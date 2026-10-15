@@ -20,7 +20,6 @@ end
 
 function Game.update(dt)
     Player.update(dt)
- 
 end
 
 function Game.draw()

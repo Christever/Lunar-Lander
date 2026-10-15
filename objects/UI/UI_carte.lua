@@ -53,18 +53,6 @@ function UI_carte.draw(Player)
     )
 end
 
--- function UI_carte.setShipPosition(x, y)
---     UI_carte.shipX = x
---     UI_carte.shipY = y
--- end
 
--- function UI_carte.updateShipPosition(Player)
---     local screenWidth = love.graphics.getWidth()
---     local screenHeight = love.graphics.getHeight()
-
---     UI_carte.shipX = Player.x / screenWidth * UI_carte.width
---     UI_carte.shipY = Player.y / screenHeight * UI_carte.height
-    -- UI_carte.shipX = UI_carte.x + 
--- end
 
 return UI_carte
