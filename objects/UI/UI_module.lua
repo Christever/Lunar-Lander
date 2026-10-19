@@ -36,31 +36,77 @@ function UI_module.load()
 
 end
 
+-- function UI_module.update(dt, rocket)
+
+--     if not rocket or not UI_module.stars then
+--         return
+--     end
+
+--     local altitudeVY = rocket.altitudeVY or 0
+
+--     -- Calcul du déplacement vertical des étoiles
+--     local speedY = altitudeVY * 5
+
+--     for _, star in ipairs(UI_module.stars) do
+
+--         -- Déplacement vertical
+--         star.y = star.y + speedY * dt
+
+--         -- Une étoile sort par le bas : elle revient en haut
+--         if star.y >= UI_module.height then
+--             star.y = star.y - UI_module.height
+--         end
+
+--         -- Une étoile sort par le haut : elle revient en bas
+--         if star.y < 0 then
+--             star.y = star.y + UI_module.height
+--         end
+
+--     end
+
+-- end
+
 
 function UI_module.update(dt, rocket)
 
-    if not rocket then
+    if not rocket or not UI_module.stars then
         return
     end
 
-    -- Récupérer la position du vaisseau
-    local rocketX = rocket.x or rocket.shipX
-    local rocketY = rocket.y or rocket.shipY
+    -- Vitesses du vaisseau
+    local altitudeVY = rocket.altitudeVY or 0
+    local vx = rocket.shipVX or 0
 
-    if not rocketX or not rocketY then
-        return
+    -- Déplacement des étoiles
+    local speedY = altitudeVY * 5
+    local speedX = -vx * .5
+
+    for _, star in ipairs(UI_module.stars) do
+
+        -- Déplacement vertical selon l'altitude
+        star.y = star.y + speedY * dt
+
+        -- Déplacement horizontal en sens inverse du vaisseau
+        star.x = star.x + speedX * dt
+
+        -- Réapparition verticale
+        if star.y >= UI_module.height then
+            star.y = star.y - UI_module.height
+        elseif star.y < 0 then
+            star.y = star.y + UI_module.height
+        end
+
+        -- Réapparition horizontale
+        if star.x >= UI_module.width then
+            star.x = star.x - UI_module.width
+        elseif star.x < 0 then
+            star.x = star.x + UI_module.width
+        end
+
     end
-
-    -- Première mise à jour : mémoriser la position
-    if UI_module.previousX == nil then
-        UI_module.previousX = rocketX
-        UI_module.previousY = rocketY
-        return
-    end
-
-
 
 end
+
 
 
 function UI_module.draw()

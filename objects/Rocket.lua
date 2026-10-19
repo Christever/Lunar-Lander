@@ -18,6 +18,8 @@ function Rocket.load()
     Rocket.maxSpeed      = 200
     Rocket.thrustPercent = 0
 
+    Rocket.impactSpeed   = nil
+
     Rocket.altitude      = 500
     Rocket.altitudeVY    = 0
 
@@ -26,7 +28,7 @@ function Rocket.load()
     Rocket.thrust        = 4.0
 
     -- Carburant
-    Rocket.fuel          = 400
+    Rocket.fuel          = 500
 
     Rocket.fuelVertical  = 10
     Rocket.fuelLatitude  = 2
@@ -69,17 +71,17 @@ function Rocket.update(dt)
     end
 
     -- Limiter la vitesse maximale
-    Rocket.shipVX     = math.max(-Rocket.maxSpeed,
+    Rocket.shipVX    = math.max(-Rocket.maxSpeed,
         math.min(Rocket.maxSpeed, Rocket.shipVX))
 
-    Rocket.shipVY     = math.max(-Rocket.maxSpeed,
+    Rocket.shipVY    = math.max(-Rocket.maxSpeed,
         math.min(Rocket.maxSpeed, Rocket.shipVY))
 
     -- Déplacement : conservation de la vitesse
-    Rocket.latitude   = Rocket.latitude + Rocket.shipVX * dt
-    Rocket.longitude  = Rocket.longitude + Rocket.shipVY * dt
+    Rocket.latitude  = Rocket.latitude + Rocket.shipVX * dt
+    Rocket.longitude = Rocket.longitude + Rocket.shipVY * dt
 
-    
+
 
     -- Gravité lunaire : accélération vers le sol
     Rocket.altitudeVY = Rocket.altitudeVY - Rocket.gravity * dt
@@ -99,6 +101,12 @@ function Rocket.update(dt)
     -- Contact avec le sol
     if Rocket.altitude <= 0 then
         Rocket.altitude = 0
+
+        -- Mémoriser la vitesse réelle à l'impact
+        if Rocket.impactSpeed == nil then
+            Rocket.impactSpeed = math.abs(Rocket.altitudeVY)
+        end
+
         Rocket.altitudeVY = 0
     end
 end
