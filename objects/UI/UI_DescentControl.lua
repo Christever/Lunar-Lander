@@ -92,12 +92,10 @@ function UI_DescentControl.draw(player)
         UI_DescentControl.y + 12
     )
 
-    love.graphics.setColor(1, 1, 1)
-
     love.graphics.setFont(FontLarge)
     love.graphics.print("Fuel", UI_DescentControl.x + 165, UI_DescentControl.y + 180)
     love.graphics.print("Alt.", UI_DescentControl.x + 285, UI_DescentControl.y + 180)
-
+    love.graphics.print("R.O.D", UI_DescentControl.x + 220, UI_DescentControl.y + 70)
     love.graphics.print("DESCENT CONTROL", UI_DescentControl.x + 120, UI_DescentControl.y + UI_DescentControl.height - 50)
 
     love.graphics.setColor(1, 1, 1)
