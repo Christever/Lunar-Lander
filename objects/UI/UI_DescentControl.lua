@@ -85,7 +85,7 @@ function UI_DescentControl.draw(player)
         )
     end
     love.graphics.setFont(FontXXL)
-    love.graphics.setColor(1,1,1)
+    love.graphics.setColor(1, 1, 1)
     love.graphics.print(
         direction,
         UI_DescentControl.x + 190,

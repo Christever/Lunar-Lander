@@ -41,6 +41,8 @@ function Rocket.load()
         right = false,
         main = false
     }
+
+    Rocket.alarmSound    = love.audio.newSource("assets/sounds/Alarm.wav", "static")
 end
 
 function Rocket.update(dt)
@@ -93,6 +95,19 @@ function Rocket.update(dt)
         Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelVertical * dt)
     else
         Rocket.thrustPercent = 0
+    end
+
+    -- Alarme en fonction du ROD
+    local rod = math.abs(Rocket.altitudeVY)
+
+    if rod > 6 then
+        -- Démarrer l'alarme si elle ne joue pas déjà
+        if not Rocket.alarmSound:isPlaying() then
+            Rocket.alarmSound:play()
+        end
+    else
+        -- Arrêter l'alarme lorsque le ROD redevient acceptable
+        Rocket.alarmSound:stop()
     end
 
     -- Mise à jour de l'altitude
