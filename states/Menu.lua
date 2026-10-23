@@ -8,7 +8,8 @@ end
 
 
 local function instructions()
-
+    State = require("states.Instructions")
+    State.load()
 end
 
 local function credits()
