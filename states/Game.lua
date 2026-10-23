@@ -102,7 +102,7 @@ function Game.draw()
 
     -- Affichage normal du jeu
     UI_carte.draw()
-    UI_module.draw()
+    UI_module.draw(Player)
     UI_Sitepanel.draw(Player)
     UI_DescentControl.draw(Player)
 
