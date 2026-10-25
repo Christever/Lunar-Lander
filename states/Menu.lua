@@ -16,10 +16,16 @@ local function credits()
 
 end
 
+local function volume()
+    State=require("states.Volume")
+    State.load()
+end
+
 local menuEntries = {
     { ['text'] = 'Play',         ['action'] = play },
     { ['text'] = 'Instructions', ['action'] = instructions },
     { ['text'] = 'Credits',      ['action'] = credits },
+    { ['text'] = 'Volume',       ['action'] = volume },
     { ['text'] = 'Quit',         ['action'] = love.event.quit }
 }
 
