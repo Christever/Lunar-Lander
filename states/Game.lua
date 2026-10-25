@@ -58,50 +58,12 @@ function Game.draw()
     if Game.state == "won" then
         State=require("states.Won")
         State.load()
-        -- love.graphics.setColor(0, 0, 0)
-        -- love.graphics.rectangle(
-        --     "fill",
-        --     0, 0,
-        --     love.graphics.getWidth(),
-        --     love.graphics.getHeight()
-        -- )
-
-        -- love.graphics.setColor(0.3, 1, 0.3)
-        -- love.graphics.printf(
-        --     "ALUNISSAGE REUSSI !",
-        --     0,
-        --     love.graphics.getHeight() / 2 - 30,
-        --     love.graphics.getWidth(),
-        --     "center"
-        -- )
-
-        -- love.graphics.setColor(1, 1, 1)
-        -- return
     end
 
     -- Écran de crash
     if Game.state == "crashed" then
         State=require("states.Lose")
         State.load()
-        -- love.graphics.setColor(0, 0, 0)
-        -- love.graphics.rectangle(
-        --     "fill",
-        --     0, 0,
-        --     love.graphics.getWidth(),
-        --     love.graphics.getHeight()
-        -- )
-
-        -- love.graphics.setColor(1, 0.2, 0.2)
-        -- love.graphics.printf(
-        --     "CRASH !",
-        --     0,
-        --     love.graphics.getHeight() / 2 - 30,
-        --     love.graphics.getWidth(),
-        --     "center"
-        -- )
-
-        -- love.graphics.setColor(1, 1, 1)
-        -- return
     end
 
     -- Affichage normal du jeu
