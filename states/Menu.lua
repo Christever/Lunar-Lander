@@ -13,7 +13,8 @@ local function instructions()
 end
 
 local function credits()
-
+    State=require("states.Credits")
+    State.load()
 end
 
 local function volume()
@@ -24,8 +25,8 @@ end
 local menuEntries = {
     { ['text'] = 'Play',         ['action'] = play },
     { ['text'] = 'Instructions', ['action'] = instructions },
-    { ['text'] = 'Credits',      ['action'] = credits },
     { ['text'] = 'Volume',       ['action'] = volume },
+    { ['text'] = 'Credits',      ['action'] = credits },
     { ['text'] = 'Quit',         ['action'] = love.event.quit }
 }
 
