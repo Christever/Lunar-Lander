@@ -2,8 +2,8 @@ local Credits = {}
 
 -- Structure contenant les informations de nos liens
 local links = {
-    { text = "Gamecodeur : https://gamecodeur.fr/!", url = "https://gamecodeur.fr/" },
-    { text = "Mon portfolio : https://steverlynck.fr/", url = "https://steverlynck.fr/" },
+    { text = "Gamecodeur : https://gamecodeur.fr/!",       url = "https://gamecodeur.fr/" },
+    { text = "Mon portfolio : https://steverlynck.fr/",    url = "https://steverlynck.fr/" },
     { text = "Mon github : https://github.com/christever", url = "https://github.com/christever" }
 }
 
@@ -23,6 +23,7 @@ local creditLines = {
 
 function Credits.load()
     love.graphics.setBackgroundColor(Color.BLACK)
+    Credits.image = love.graphics.newImage("assets/Images/dm.png")
 end
 
 function Credits.update(dt)
@@ -35,11 +36,18 @@ function Credits.draw()
     love.graphics.setBackgroundColor(Color.BLACK)
     love.graphics.setColor(Color.WHITE)
 
+    love.graphics.draw(
+        Credits.image,
+        screenWidth / 2 - Credits.image:getWidth() / 2,
+        20
+    )
+
+
     -- 1. Titre
     love.graphics.setFont(FontMedium)
     local title = "Credits"
     local titleWidth = FontMedium:getWidth(title)
-    love.graphics.print(title, (screenWidth - titleWidth) / 2, 100)
+    love.graphics.print(title, (screenWidth - titleWidth) / 2, 150)
 
     -- 2. Configuration de l'affichage du corps du texte
     love.graphics.setFont(FontSmall or FontMedium)
@@ -55,11 +63,12 @@ function Credits.draw()
         currentY = currentY + lineHeight
     end
 
+
     -- 4. Affichage des liens interactifs avec effet visuel au survol
     for _, link in ipairs(links) do
         local lineWidth = font:getWidth(link.text)
         local startX = (screenWidth - lineWidth) / 2
-        
+
         -- On stocke dynamiquement la zone du lien pour la collision de la souris
         link.x = startX
         link.y = currentY
@@ -68,10 +77,10 @@ function Credits.draw()
 
         -- Si la souris survole le lien, on change sa couleur et on le souligne
         if mouseX >= link.x and mouseX <= link.x + link.w and mouseY >= link.y and mouseY <= link.y + link.h then
-            love.graphics.setColor(0.3, 0.6, 1) -- Couleur Bleue au survol
+            love.graphics.setColor(0.3, 0.6, 1)                                           -- Couleur Bleue au survol
             love.graphics.line(link.x, link.y + link.h, link.x + link.w, link.y + link.h) -- Soulignement
         else
-            love.graphics.setColor(1, 1, 1) -- Couleur Blanche par défaut
+            love.graphics.setColor(1, 1, 1)                                               -- Couleur Blanche par défaut
         end
 
         love.graphics.print(link.text, startX, currentY)
@@ -81,7 +90,7 @@ function Credits.draw()
     -- 5. Message de fin
     love.graphics.setColor(1, 1, 1)
     currentY = currentY + (lineHeight * 3) -- Espacement
-    
+
     local escapeText = "Appuyez sur ESCAPE pour revenir au menu."
     local escapeWidth = font:getWidth(escapeText)
     love.graphics.print(escapeText, (screenWidth - escapeWidth) / 2, currentY)

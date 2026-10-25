@@ -2,7 +2,7 @@ local Title = {}
 
 function Title.load()
     love.window.setMode(650,800)
-    Title.image = love.graphics.newImage("assets/Images/title.jpg")
+    Title.image = love.graphics.newImage("assets/Images/title1.jpg")
     love.graphics.setFont(FontXXL)
 end
 
