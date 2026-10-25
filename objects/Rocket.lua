@@ -153,7 +153,7 @@ function Rocket.draw()
     end
 
     -- RIGHT : flamme sur le côté droit
-    if Rocket.thrusters.right then
+    if Rocket.thrusters.left then
         Rocket.drawFlame(
             x + w,
             y + h / 2,
@@ -163,7 +163,7 @@ function Rocket.draw()
     end
 
     -- LEFT : flamme sur le côté gauche
-    if Rocket.thrusters.left then
+    if Rocket.thrusters.right then
         Rocket.drawFlame(
             x,
             y + h / 2,
