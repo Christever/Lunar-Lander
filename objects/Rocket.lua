@@ -42,10 +42,13 @@ function Rocket.load()
         main = false
     }
 
-    Rocket.alarmSound    = love.audio.newSource("assets/sounds/Alarm.wav", "static")
+    Rocket.alarmSound    = love.audio.newSource("assets/sounds/buzz.mp3", "static")
+    Rocket.alarmSound:setVolume(0.5)
+    Rocket.thrustSound = love.audio.newSource("assets/sounds/thrust.wav", "static")
 end
 
 function Rocket.update(dt)
+    
     Rocket.thrusters.left  = love.keyboard.isDown("left") and Rocket.fuel > 0
     Rocket.thrusters.right = love.keyboard.isDown("right") and Rocket.fuel > 0
     Rocket.thrusters.up    = love.keyboard.isDown("up") and Rocket.fuel > 0
@@ -53,21 +56,25 @@ function Rocket.update(dt)
     Rocket.thrusters.main  = love.keyboard.isDown("space") and Rocket.fuel > 0
     -- Accélération commandée
     if love.keyboard.isDown("left") then
+        Rocket.thrustSound:play()
         Rocket.shipVX = Rocket.shipVX - Rocket.acceleration * dt
         Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLatitude * dt)
     end
 
     if love.keyboard.isDown("right") then
+        Rocket.thrustSound:play()
         Rocket.shipVX = Rocket.shipVX + Rocket.acceleration * dt
         Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLatitude * dt)
     end
 
     if love.keyboard.isDown("up") then
+        Rocket.thrustSound:play()
         Rocket.shipVY = Rocket.shipVY - Rocket.acceleration * dt
         Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLongitude * dt)
     end
 
     if love.keyboard.isDown("down") then
+        Rocket.thrustSound:play()
         Rocket.shipVY = Rocket.shipVY + Rocket.acceleration * dt
         Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelLongitude * dt)
     end
@@ -90,6 +97,7 @@ function Rocket.update(dt)
 
     -- Moteur : poussée vers le haut
     if love.keyboard.isDown("space") and Rocket.fuel > 0 then
+        Rocket.thrustSound:play()
         Rocket.thrustPercent = 100
         Rocket.altitudeVY = Rocket.altitudeVY + Rocket.thrust * dt
         Rocket.fuel = math.max(0, Rocket.fuel - Rocket.fuelVertical * dt)
