@@ -43,7 +43,7 @@ function Rocket.load()
     }
 
     Rocket.alarmSound    = love.audio.newSource("assets/sounds/buzz.mp3", "static")
-    Rocket.alarmSound:setVolume(0.5)
+    Rocket.alarmSound:setVolume(0.1)
     Rocket.thrustSound = love.audio.newSource("assets/sounds/thrust.wav", "static")
 end
 
